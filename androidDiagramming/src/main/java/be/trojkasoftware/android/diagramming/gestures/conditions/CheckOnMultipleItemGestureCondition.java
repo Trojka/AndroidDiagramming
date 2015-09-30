@@ -1,0 +1,31 @@
+package be.trojkasoftware.android.diagramming.gestures.conditions;
+
+import java.util.List;
+
+import be.trojkasoftware.android.diagramming.DiagramDesignerView;
+import be.trojkasoftware.android.diagramming.HitDefinition;
+
+import be.trojkasoftware.android.gestures.GestureConditionBase;
+import be.trojkasoftware.android.gestures.GestureEvent;
+import be.trojkasoftware.android.gestures.TouchGesture;
+
+public class CheckOnMultipleItemGestureCondition extends GestureConditionBase<DiagramDesignerView> {
+
+	public CheckOnMultipleItemGestureCondition(DiagramDesignerView view) {
+		super(view);
+	}
+	
+	@Override
+	public boolean checkCondition(GestureEvent motion, TouchGesture gesture) {
+		List<HitDefinition> hitResult = getTouchBase().hitTest(motion.getPosition());
+		int numberOfSelectedItems = 0;
+		for(HitDefinition hitItem : hitResult)
+		{
+			if(hitItem.isOnNode())
+			{
+				numberOfSelectedItems++;
+			}
+		}
+		return hitResult.size() > 1 && numberOfSelectedItems >= 2;
+	}
+}

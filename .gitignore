@@ -1,0 +1,18 @@
+# Local configuration file (sdk path, etc)
+/local.properties
+
+# Android Studio
+# we do need the iml files
+#*.iml  
+.idea/
+/.idea/workspace.xml
+/.idea/libraries
+
+# Other
+.DS_Store
+
+# Gradle
+# we do need the gradle folder or otherwise we'll need to copy it from somewhere else
+#gradle
+.gradle
+build
