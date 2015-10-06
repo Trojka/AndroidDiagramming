@@ -102,7 +102,16 @@ public class CommandWidget implements IDrawable {
 	{
 		return "information";
 	}
-	
+
+    protected int getDrawableResourceId()
+    {
+        Resources res = mView.getResources();
+        String packageName = mView.getContext().getPackageName();
+        int id = res.getIdentifier(getDrawableResourceName(), "drawable", packageName);
+
+        return id;
+    }
+
 	public void Draw(Canvas canvas)
 	{
     	getTemplate().draw(canvas);
@@ -114,9 +123,7 @@ public class CommandWidget implements IDrawable {
 		{
 		    Resources res = mView.getResources();
 		    try {
-                String packageName = mView.getContext().getPackageName();
-		    	int id = res.getIdentifier(getDrawableResourceName(), "drawable", packageName);
-		    	mDrawable = (Drawable) res.getDrawable(id);
+		    	mDrawable = (Drawable) res.getDrawable(getDrawableResourceId());
 		    } catch (Exception ex) {
 		       Log.e("Error", "Exception loading drawable: " + ex.getMessage());
 		    }
@@ -151,7 +158,7 @@ public class CommandWidget implements IDrawable {
 	
 	private Drawable mDrawable;
 	private DiagramDesignerView mView;
-	ScreenVector position = new ScreenVector(100, 100);
+	ScreenVector position = new ScreenVector(0, 0);
     int width = 16;
     int height = 16;
 }

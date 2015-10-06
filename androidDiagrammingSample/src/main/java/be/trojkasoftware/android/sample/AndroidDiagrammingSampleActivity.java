@@ -2,14 +2,11 @@ package be.trojkasoftware.android.sample;
 
 import java.util.List;
 
-import be.trojkasoftware.android.diagramming.CommandWidget;
-import be.trojkasoftware.android.diagramming.ConnectionPoint;
 import be.trojkasoftware.android.diagramming.DesignerVector;
 import be.trojkasoftware.android.diagramming.DiagramDesignerView;
 import be.trojkasoftware.android.diagramming.DiagramDesignerView.IDiagramDesignerEvents;
-import be.trojkasoftware.android.diagramming.commands.widgets.DeleteSelectedItemsCommandWidget;
-import be.trojkasoftware.android.diagramming.commands.widgets.ZoomInCommandWidget;
-import be.trojkasoftware.android.diagramming.commands.widgets.ZoomOutCommandWidget;
+import be.trojkasoftware.android.sample.diagramming.sampledata.CommandPanDownWidget;
+import be.trojkasoftware.android.sample.diagramming.sampledata.CommandPanUpWidget;
 import be.trojkasoftware.android.sample.diagramming.sampledata.CustomGraphDataStructure;
 import be.trojkasoftware.android.sample.diagramming.sampledata.NodeType;
 import be.trojkasoftware.android.sample.diagramming.sampledata.CustomGraphDataStructure.Connection;
@@ -32,7 +29,9 @@ public class AndroidDiagrammingSampleActivity extends Activity implements IDiagr
         
         view = new DiagramDesignerView(this, SelectDesigerItemListActivity.class);
         view.setBackgroundColor(Color.argb(255, 255, 255, 255));
-        
+        view.addCommand(new CommandPanUpWidget(view));
+        view.addCommand(new CommandPanDownWidget(view));
+
         view.setDiagramDesignerEventHandler(this);
 
         data = new CustomGraphDataStructure();

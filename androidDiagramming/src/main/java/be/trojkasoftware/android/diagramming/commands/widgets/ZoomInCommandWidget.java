@@ -15,7 +15,7 @@ public class ZoomInCommandWidget extends CommandWidget {
 
 	protected String getDrawableResourceName()
 	{
-		return "zoomin";
+		return "zoom_in";
 	}
 
 }

@@ -15,7 +15,7 @@ public class ZoomOutCommandWidget extends CommandWidget {
 
 	protected String getDrawableResourceName()
 	{
-		return "zoomout";
+		return "zoom_out";
 	}
 
 }

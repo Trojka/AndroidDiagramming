@@ -196,7 +196,7 @@ public class DiagramDesignerItem implements IDrawable {
 		
 		return connectionPointMap.keySet();
 	}
-	
+
 	public int getDrawableResourceId()
 	{
 		return R.drawable.diagramdesigner_item;
@@ -239,8 +239,8 @@ public class DiagramDesignerItem implements IDrawable {
 	{
 		if(mDrawable == null)
 		{
+            Resources res = context.getResources();
 		    try {
-		    	Resources res = context.getResources();
 		    	mDrawable = (Drawable) res.getDrawable(getDrawableResourceId());
 		    } catch (Exception ex) {
 		       Log.e("Error", "Exception loading drawable: " + ex.getMessage());
@@ -313,7 +313,7 @@ public class DiagramDesignerItem implements IDrawable {
 	private void setConnectionPointTemplateDrawableBounds(ConnectionPoint connectionPoint)
 	{
 		Drawable connectionPointDrawable = mConnectionPointDrawables.get(connectionPoint);
-		int numberOfConnectionsPointOnDock = getNumberOfItemsDockedToDock(connectionPoint.getDock());
+		//int numberOfConnectionsPointOnDock = getNumberOfItemsDockedToDock(connectionPoint.getDock());
 		
 		connectionPointDrawable.setBounds(getConnectionPointBounds(connectionPoint));
 		return;
